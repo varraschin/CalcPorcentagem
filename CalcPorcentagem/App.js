@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity, Keyboard } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity, Keyboard, Image } from 'react-native';
 import Ionicons from "@expo/vector-icons/Ionicons";
+import batmanImg from './assets/batmanlogo.png';
 
 export default function App() {
   const [number, setNumber] = useState('');
@@ -30,7 +31,7 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.titlecontainer}>
-        <Text style={styles.title}>Calculadora de Porcentagem</Text>
+        <Text style={styles.title}>BatPorcentagem</Text>
       </View>
       <View style={styles.content}>
         <Text style={styles.subtitle}>Calculadora de Porcentagem</Text>
@@ -43,6 +44,7 @@ export default function App() {
             onChangeText={(text) => setNumber(text)}
             placeholder="Ex. 200"
             keyboardType="numeric"
+            placeholderTextColor="#FFD600"
           />
         </View>
 
@@ -52,8 +54,9 @@ export default function App() {
             style={styles.input}
             value={percentage}
             onChangeText={(text) => setPercentage(text)}
-            placeholder="Ex. 15.5"
+            placeholder="Ex. 15"
             keyboardType="numeric"
+            placeholderTextColor="#FFD600"
           />
         </View>
 
@@ -61,13 +64,14 @@ export default function App() {
           style={styles.button}
           onPress={calcularPorcentagem}
         >
-          <Ionicons name="calculator-sharp" size={24} color="#edf2f4" />
+          <Ionicons name="calculator-sharp" size={24} color="#000" />
           <Text style={styles.text}>{textButton}</Text>
         </TouchableOpacity>
 
         <View style={styles.resultContainer}>
           <Text style={styles.resultText}>{messageResult}</Text>
           <Text style={styles.resultValue}>{result}</Text>
+          <Image source={batmanImg} style={styles.image} resizeMode="contain" />
         </View>
 
       </View>
@@ -79,18 +83,18 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#EDF2F4',
+    backgroundColor: '#000000',
   },
   titlecontainer: {
     alignItems: 'center',
     justifyContent: 'flex-end',
     height: 130,
-    backgroundColor: '#D90429',
+    backgroundColor: '#FFD600',
     borderBottomStartRadius: 25,
     borderBottomEndRadius: 25,
   },
   title: {
-    color: '#EDF2F4',
+    color: '#000000',
     fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 30,
@@ -99,25 +103,26 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 40,
     width: '100%',
-    backgroundColor: 'EDF2F4',
+    backgroundColor: '#000000',
   },
   subtitle: {
     textAlign: 'center',
     fontSize: 24,
-    color: '#D90429',
+    color: '#FFD600',
     fontWeight: 'bold',
     marginBottom: 40,
   },
   label: {
-    color: '#000',
+    color: '#FFD600',
     fontSize: 18,
   },
   input: {
     height: 45,
     width: '100%',
     fontSize: 18,
-    borderColor: '#D90429',
+    borderColor: '#FFD600',
     borderBottomWidth: 1,
+    color: '#FFD600',
   },
   button: {
     width: '100%',
@@ -125,13 +130,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ef233c',
+    backgroundColor: '#FFD600',
     borderRadius: 15,
     marginTop: 40,
     marginBottom: 10,
   },
   text: {
-    color: '#edf2f4',
+    color: '#000',
     fontSize: 24,
     fontWeight: 'bold',
     marginLeft: 5,
@@ -144,12 +149,18 @@ const styles = StyleSheet.create({
   },
   resultText: {
     fontSize: 18,
-    color: '#ef233c',
+    color: '#FFD600',
     fontWeight: 'bold',
+    marginTop: 80
   },
   resultValue: {
     fontSize: 48,
-    color: '#ef233c',
+    color: '#FFD600',
     fontWeight: 'bold',
+  },
+  image: {
+    width: 200,
+    height: 200,
+    marginBottom: 30
   }
 });
